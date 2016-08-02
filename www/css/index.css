@@ -44,11 +44,31 @@ body {
     width:100%;
 }
 
-.top-menu{
-    background-color: #00ff00;
-    height: 50px;
-    width: 100%;
+ul.topnav {
+  list-style-type: none;
+  position: fixed;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
 }
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: inline-block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+ul.topnav li a:active {background-color: #555;}
+
+ul.topnav li.icon {display: none;}
 
 /* Portrait layout (default) */
 .app {
@@ -64,14 +84,36 @@ body {
                                    /* offset horizontal: half of text area width */
 }
 
-/* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    .app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-    }
+@media screen and (max-width:680px) {
+  ul.topnav li:not(:first-child) {display: none;}
+  ul.topnav li.icon {
+    float: right;
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width:680px) {
+  .app {
+    background-position:left center;
+    padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+    margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                  /* offset horizontal: half of image width and text area width */
+  }
+
+  ul.topnav.responsive {position: fixed;}
+  ul.topnav.responsive li.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  ul.topnav.responsive li {
+    float: none;
+    display: inline;
+  }
+  ul.topnav.responsive li a {
+    display: block;
+    text-align: left;
+  }
 }
 
 h1 {
