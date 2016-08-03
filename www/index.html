@@ -8,16 +8,15 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <title>Hello World</title>
 </head>
 
 <body>
     <ul class="topnav" id="myTopnav">
       <li><a class="active" href="#pageone">Home</a></li>
-      <li><a href="news.html">News</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="images.html">Images</a></li>
+      <li><a href="about.html">About</a></li>
       <li class="icon">
         <a href="javascript:void(0);" style="font-size:15px;" id="menu-icon">☰</a>
       </li>
@@ -29,43 +28,72 @@
 
     <div data-role="page" id="pageone">
 
-      <div data-role="main" class="ui-content">
-        <h3>Slowly resize the width of your browser window. The layout will adjust itself to fit the "new" width of the browser.</h3>
-        <div class="ui-grid-b ui-responsive">
-          <div class="ui-block-a">
-            <a href="#" class="ui-btn ui-corner-all ui-shadow">First Column Button</a><br>
-            <span>First Column: This is some text. This is some text. This is some text. This is some text. This is some text.</span>
-          </div>
-          <div class="ui-block-b">
-            <a href="#" class="ui-btn ui-corner-all ui-shadow">Second Column Button</a><br>
-            <span>Second Column: This is some text. This is some text. This is some text. This is some text.</span>
-          </div>
-          <div class="ui-block-c">
-            <a href="#" class="ui-btn ui-corner-all ui-shadow">Third Column Button</a><br>
-            <span>Third Column: This is some text. This is some text. This is some text. This is some text.</span>
-          </div>
+    </div>
+  <div id="accordion">
+    <div class="acc-item">
+      <div class="acc-header">Section 1</div>
+      <div class="acc-hide">
+        <hr>
+        <div class="acc-text">
+        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+        ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+        amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+        odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
         </div>
       </div>
     </div>
-
-    <div data-role="page" id="pagetwo">
-        <div data-role="header">
-            <h1>Welcome To My Homepage</h1>
+    <div class="acc-item">
+      <div class="acc-header">Section 2</div>
+      <div class="acc-hide">
+        <hr>
+        <div class="acc-text">
+        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+        ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+        amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+        odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
         </div>
-
-        <div data-role="main" class="ui-content">
-            <p>This is Page Two. If you click on the link below, it will take you to Page One.</p>
-            <a href="#pageone">Go to Page One</a>
-        </div>
-
-        <div data-role="footer">
-            <h1>Footer Text</h1>
-        </div>
+      </div>
     </div>
+    <div class="acc-item">
+      <div class="acc-header">Section 3</div>
+      <div class="acc-hide">
+        <hr>
+        <div class="acc-text">
+        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+        ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+        amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+        odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+        </div>
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-header">Section 4</div>
+      <div class="acc-hide">
+        <hr>
+        <div class="acc-text">
+        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+        ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+        amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+        odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+        </div>
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-header">Section 5</div>
+      <div class="acc-hide">
+        <hr>
+        <div class="acc-text">
+        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+        ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+        amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+        odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+        </div>
+      </div>
+    </div>
+  </div>
     
     <script src="jquery/jquery-3.1.0.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <script type="text/javascript" src="cordova.js"></script>
+    <script src="jquery/jquery.mobile-1.4.5.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/menu.js"></script>
     <script type="text/javascript">

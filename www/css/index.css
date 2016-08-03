@@ -52,6 +52,8 @@ ul.topnav {
   padding: 0;
   overflow: hidden;
   background-color: #333;
+  top:0;
+  z-index: 100;
 }
 
 ul.topnav li {float: left;}
@@ -159,4 +161,45 @@ h1 {
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+}
+
+
+/*----------------------------
+  Accordeon items
+-----------------------------*/
+
+#accordion{
+  top: 40px;
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.acc-item{
+  border:5px solid #303030;
+  background-color: #303030;
+  border-radius:10px;
+  text-decoration:none;
+  display:inline-block;
+  box-shadow:0 1px 3px rgba(0,0,0,0.5);
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.acc-header{
+  color: #A0C5D1;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.acc-text{
+    padding: 5px;
+    background-color: #A0C5D1;
+  border-radius: 0  0 10px 10px;
+}
+
+.acc-hide{
+  display: none;
 }

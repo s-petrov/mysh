@@ -7,3 +7,7 @@
 	        x.className = "topnav";
 	    }
 	});
+
+	$(".acc-item").click(function() {
+		$(this).find(".acc-hide").toggle("slow");
+	});
