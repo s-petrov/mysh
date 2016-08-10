@@ -16,6 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+:root {
+  --main-color: #FF8C1D;
+  --main-bg-color: #E4E4E4;
+}
+
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
@@ -24,17 +30,7 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
-    );
+    background-color:var(--main-bg-color);
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
@@ -44,37 +40,8 @@ body {
     width:100%;
 }
 
-ul.topnav {
-  list-style-type: none;
-  position: fixed;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-  top:0;
-  z-index: 100;
-}
-
-ul.topnav li {float: left;}
-
-ul.topnav li a {
-  display: inline-block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  transition: 0.3s;
-  font-size: 17px;
-}
-
-ul.topnav li a:active {background-color: #555;}
-
-ul.topnav li.icon {display: none;}
-
 /* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
     position:absolute;             /* position in the center of the screen */
     left:50%;
     top:50%;
@@ -165,11 +132,11 @@ h1 {
 
 
 /*----------------------------
-  Accordeon items
+  Accordion items
 -----------------------------*/
 
-#accordion{
-  top: 40px;
+#content-holder{
+  top: 50px;
   position: relative;
   width: 90%;
   margin: 0 auto;
@@ -177,8 +144,8 @@ h1 {
 }
 
 .acc-item{
-  border:5px solid #303030;
-  background-color: #303030;
+  border:5px solid var(--main-color);
+  background-color: var(--main-color);
   border-radius:10px;
   text-decoration:none;
   display:inline-block;
@@ -188,18 +155,71 @@ h1 {
 }
 
 .acc-header{
-  color: #A0C5D1;
+  color: var(--main-bg-color);
   font-size: 1.5em;
   font-weight: bold;
   padding: 5px;
 }
 
 .acc-text{
-    padding: 5px;
-    background-color: #A0C5D1;
+  padding: 5px;
+  background-color: var(--main-bg-color);
   border-radius: 0  0 10px 10px;
 }
 
 .acc-hide{
   display: none;
+}
+
+/*----------------------------
+  Home page
+-----------------------------*/
+
+.icon-box{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#links-box{
+  background-image: url("../img/nav-links.png"); 
+}
+
+.home-icon{
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: center; 
+}
+
+.info-icon{
+}
+
+#icon-top-left{
+  float: left;
+  background-image: url("../img/picture.png"); 
+}
+
+#icon-top-right{
+  float: right;
+  background-image: url("../img/form.png"); 
+}
+
+#icon-bottom-left{
+  float: left;
+  margin-top: 100px;
+  background-image: url("../img/charity.png"); 
+  border: 1px solid var(--main-bg-color);;
+}
+
+#icon-bottom-right{
+  float: right;
+  margin-top: 100px;
+  background-image: url("../img/favorite.png"); 
 }

@@ -59,11 +59,35 @@
 	margin-right:-1px;
 }
 
-#gallerySlider .placeholder img{
+.placeholder-image{
 	display: inline-block;
 	max-height: 100%;
 	max-width: 100%;
 	vertical-align: middle;
+	position: relative;
+	overflow: hidden;
+}
+
+.placeholder-image img{
+	display: inline-block;
+	position: relative;
+	max-width: 100%;
+	max-height: 100%;
+	vertical-align: middle;
+}
+
+.img-caption{
+	opacity: 0.6;
+	background-color:#222 !important;
+	color: white;
+	font-size: 1.5em;
+	position: absolute;
+	bottom: 0;
+	z-index: 1;
+	text-align: center;
+	width: 100%;
+	line-height: 1.5em;
+	white-space: normal;
 }
 
 #gallerySlider.rightSpring{

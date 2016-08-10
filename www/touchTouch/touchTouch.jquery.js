@@ -33,7 +33,6 @@
 
 		// Creating a placeholder for each image
 		items.each(function(){
-
 			placeholders = placeholders.add($('<div class="placeholder">'));
 		});
 
@@ -240,7 +239,15 @@
 
 			// Call the load function with the href attribute of the item
 			loadImage(items.eq(index).attr('href'), function(){
-				placeholders.eq(index).html(this);
+
+				var holder = document.createElement('div');
+				$(holder).addClass('placeholder-image');
+				var caption = document.createElement('div');
+				$(caption).text("This is some example going on multiple lines even multiplier lines going here");
+				$(caption).addClass("img-caption");
+				$(holder).append(caption);
+				$(holder).append(this);
+				placeholders.eq(index).html(holder);
 			});
 		}
 
