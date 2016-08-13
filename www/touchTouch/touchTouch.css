@@ -86,8 +86,9 @@
 	z-index: 1;
 	text-align: center;
 	width: 100%;
-	line-height: 1.5em;
+	line-height: 1.1;
 	white-space: normal;
+	padding-bottom: 5px;
 }
 
 #gallerySlider.rightSpring{

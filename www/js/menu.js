@@ -1,3 +1,4 @@
+$(function(){
 
 	$( "#menu-icon" ).click(function() {
   		var x = document.getElementById("myTopnav");
@@ -24,4 +25,5 @@
 	        unsortedElems.eq(i).replaceWith(elems[i]);
 	    }); 
 	};
-	
+
+});	

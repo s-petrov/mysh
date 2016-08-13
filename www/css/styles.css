@@ -94,44 +94,8 @@ header img{
 -----------------------------*/
 
 .thumbs{
-	width:480px;
-	margin: 0 auto;
-	text-align:center;
+	display: none;
 }
-
-.thumbs a{
-	width:100px;
-	height:100px;
-	display:inline-block;
-	border:1px solid #303030;
-	box-shadow:0 1px 3px rgba(0,0,0,0.5);
-	margin: 1px;
-	position:relative;
-	text-decoration:none;
-	
-	background-position:center center;
-	background-repeat: no-repeat;
-	
-	background-size:cover;
-	-moz-background-size:cover;
-	-webkit-background-size:cover;
-}
-
-.image-caption{
-	text-align: center;
-	font-size: 2em;
-	background-color:rgba(0,0,0,0.8) !important;
-	color: white;
-	font-weight: bold;
-	position: fixed;
-	z-index: 99;
-	position: fixed;
-	width: 100%;
-	height: 50px;
-	bottom: 50px;
-	background-color: #E4E4E4;
-}
-
 /*----------------------------
 	Media Queries
 -----------------------------*/

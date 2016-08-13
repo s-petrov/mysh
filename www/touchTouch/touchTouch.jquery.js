@@ -9,6 +9,19 @@
 
 (function(){
 
+	$.fn.randomize = function(elements) {
+	    return this.each(function() {
+	      var $this = $(this);
+	      var unsortedElems = $this.find(elements);
+	      var elems = unsortedElems.clone();
+	      
+	      elems.sort(function() { return (Math.round(Math.random())-0.5); });  
+
+	      for(var i=0; i < elems.length; i++)
+	        unsortedElems.eq(i).replaceWith(elems[i]);
+	    }); 
+	};
+	$('.thumbs').randomize('a');
 	/* Private variables */
 
 	var overlay = $('<div id="galleryOverlay">'),
@@ -82,11 +95,12 @@
 		});
 
 		// Listening for clicks on the thumbnails
-		items.on('click', function(e){
+		$("#icon-top-left").on('click', function(e){
 
 			e.preventDefault();
+			$('.thumbs').randomize('a');
 
-			var $this = $(this),
+			var $this = $(".thumbs").find('a').first(),
 				galleryName,
 				selectorType,
 				$closestGallery = $this.parent().closest('[data-gallery]');
@@ -110,24 +124,11 @@
 
 			//These statements kept seperate in case elements have data-gallery on both
 			//items and ancestor. Ancestor will always win because of above statments.
-			if (galleryName && selectorType == 'item') {
-
-				items = $('[data-gallery='+galleryName+']');
-
-			} else if (galleryName && selectorType == 'ancestor') {
-
-				//Filter to check if item has an ancestory with data-gallery attribute
-				items = items.filter(function(){
-
-           			return $(this).parent().closest('[data-gallery]').length;
-
-           		});
-
-			}
+			items = $(".thumbs").find('a');
 
 			// Find the position of this image
 			// in the collection
-			index = items.index(this);
+			index = items.index($(".thumbs").find('a').first());
 			showOverlay(index);
 			showImage(index);
 
@@ -233,17 +234,20 @@
 		function showImage(index){
 
 			// If the index is outside the bonds of the array
-			if(index < 0 || index >= items.length){
+			if(index < 0 || index >= $(".thumbs").find('a').length){
 				return false;
 			}
 
+			var imageTitle = $(".thumbs").find('a').eq(index).attr('title');
+
 			// Call the load function with the href attribute of the item
-			loadImage(items.eq(index).attr('href'), function(){
+			loadImage($(".thumbs").find('a').eq(index).attr('href'), function(){
 
 				var holder = document.createElement('div');
 				$(holder).addClass('placeholder-image');
 				var caption = document.createElement('div');
-				$(caption).text("This is some example going on multiple lines even multiplier lines going here");
+				var blio = imageTitle;
+				$(caption).text(imageTitle);
 				$(caption).addClass("img-caption");
 				$(holder).append(caption);
 				$(holder).append(this);
@@ -300,4 +304,7 @@
 		}
 	};
 
+
+	// Initialize the gallery
+	$('.thumbs a').touchTouch();
 })(jQuery);
