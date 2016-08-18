@@ -30,25 +30,25 @@ $(function(){
 
         if ($("#icon-bottom-left").hasClass("moved")){
             $("#web-contact").animate({
-                left: '-=125px'
+                left: '-=100px'
             });
             $("#info-contact").animate({
-                left: '-=125px',
-                top: '+=125px',
+                left: '-=100px',
+                top: '+=100px',
             });
             $("#phone-contact").animate({
-                top: '+=125px'
+                top: '+=100px'
             });
 		} else {
 	        $("#web-contact").animate({
-	            left: '+=125px'
+	            left: '+=100px'
 	        });
 	        $("#info-contact").animate({
-	            left: '+=125px',
-	            top: '-=125px',
+	            left: '+=100px',
+	            top: '-=100px',
 	        });
 	        $("#phone-contact").animate({
-	            top: '-=125px'
+	            top: '-=100px'
 	        });
 	    }
 
