@@ -49,7 +49,7 @@ section, footer, header{
 	position: relative;
   	background-repeat: no-repeat;
   	background-position: center; 
-  	background-image: url("../img/back-button.png"); 
+  	background-image: url("../img/reply.png"); 
   	float: right;
 }
 

@@ -1,14 +1,5 @@
-/**
- * @name		jQuery touchTouch plugin
- * @author		Martin Angelov
- * @version 	1.0
- * @url			http://tutorialzine.com/2012/04/mobile-touch-gallery/
- * @license		MIT License
- */
-
 
 (function(){
-
 	$.fn.randomize = function(elements) {
 	    return this.each(function() {
 	      var $this = $(this);
@@ -21,19 +12,19 @@
 	        unsortedElems.eq(i).replaceWith(elems[i]);
 	    }); 
 	};
-	$('.thumbs').randomize('a');
+	$('.tasks').randomize('.single-task');
 	/* Private variables */
 
-	var overlay = $('<div id="galleryOverlay">'),
-		slider = $('<div id="gallerySlider">'),
-		prevArrow = $('<a id="prevArrow"></a>'),
-		nextArrow = $('<a id="nextArrow"></a>'),
+	var overlay = $('<div id="taskOverlay">'),
+		slider = $('<div id="taskSlider">'),
+		prevTask = $('<a id="prevTask"></a>'),
+		nextTask = $('<a id="nextTask"></a>'),
 		overlayVisible = false;
 
 
 	/* Creating the plugin */
 
-	$.fn.touchTouch = function(){
+	$.fn.tasksSlider = function(){
 
 		var placeholders = $([]),
 			index = 0,
@@ -52,22 +43,28 @@
 		// Hide the gallery if the background is touched / clicked
 		slider.append(placeholders).on('click',function(e){
 
-			if(!$(e.target).is('img')){
+			if(!$(e.target).is('.single-task')){
 				hideOverlay();
 			}
 		});
 
+		var movevar = false;
+		var linkHref = undefined;
 		// Listen for touch events on the body and check if they
-		// originated in #gallerySlider img - the images in the slider.
-		$('body').on('touchstart', '#gallerySlider img', function(e){
+		// originated in #taskSlider img - the images in the slider.
+		$('body').on('touchstart', '#taskSlider .single-task', function(e){
 
 			var touch = e.originalEvent,
 				startX = touch.changedTouches[0].pageX;
+
+
+				linkHref = $(this).find('a').first().attr('href');
 
 			slider.on('touchmove',function(e){
 
 				e.preventDefault();
 
+				movevar = true;
 				touch = e.originalEvent.touches[0] ||
 						e.originalEvent.changedTouches[0];
 
@@ -90,44 +87,31 @@
 
 		}).on('touchend',function(){
 
-			slider.off('touchmove');
+			if (movevar === false && linkHref !== undefined){
+					console.log("--- CLICK AND LINK");
+					window.open(linkHref, "_system");
+			} 
 
+			movevar = false;
+			linkHref = undefined;
+			//return true;
+			slider.off('touchmove');
 		});
 
 		// Listening for clicks on the thumbnails
-		$("#icon-top-left").on('click', function(e){
+		$("#icon-top-right").on('click', function(e){
 
-			$('.thumbs').randomize('a');
+			$('.tasks').randomize('.single-task');
 
-			var $this = $(".thumbs").find('a').first(),
-				galleryName,
-				selectorType,
-				$closestGallery = $this.parent().closest('[data-gallery]');
-
-			// Find gallery name and change items object to only have
-			// that gallery
-
-			//If gallery name given to each item
-			if ($this.attr('data-gallery')) {
-
-				galleryName = $this.attr('data-gallery');
-				selectorType = 'item';
-
-			//If gallery name given to some ancestor
-			} else if ($closestGallery.length) {
-
-				galleryName = $closestGallery.attr('data-gallery');
-				selectorType = 'ancestor';
-
-			}
-
+			var $this = $(".tasks").find('.single-task').first(),
+				selectorType;
 			//These statements kept seperate in case elements have data-gallery on both
 			//items and ancestor. Ancestor will always win because of above statments.
-			items = $(".thumbs").find('a');
+			items = $(".tasks").find('.single-task');
 
 			// Find the position of this image
 			// in the collection
-			index = items.index($(".thumbs").find('a').first());
+			index = items.index($(".tasks").find('.single-task').first());
 			showOverlay(index);
 			showImage(index);
 
@@ -142,14 +126,14 @@
 		// If the browser does not have support
 		// for touch, display the arrows
 		if ( !("ontouchstart" in window) ){
-			overlay.append(prevArrow).append(nextArrow);
+			overlay.append(prevTask).append(nextTask);
 
-			prevArrow.click(function(e){
+			prevTask.click(function(e){
 				e.preventDefault();
 				showPrevious();
 			});
 
-			nextArrow.click(function(e){
+			nextTask.click(function(e){
 				e.preventDefault();
 				showNext();
 			});
@@ -171,10 +155,6 @@
 			}
 
 		});
-
-
-		/* Private functions */
-
 
 		function showOverlay(index){
 			// If the overlay is already shown, exit
@@ -233,37 +213,13 @@
 		function showImage(index){
 
 			// If the index is outside the bonds of the array
-			if(index < 0 || index >= $(".thumbs").find('a').length){
+			if(index < 0 || index >= $(".tasks").find('.single-task').length){
 				return false;
 			}
 
-			var imageTitle = $(".thumbs").find('a').eq(index).attr('title');
 
-			// Call the load function with the href attribute of the item
-			loadImage($(".thumbs").find('a').eq(index).attr('href'), function(){
-
-				var holder = document.createElement('div');
-				$(holder).addClass('placeholder-image');
-				var caption = document.createElement('div');
-				var blio = imageTitle;
-				$(caption).text(imageTitle);
-				$(caption).addClass("img-caption");
-				$(holder).append(caption);
-				$(holder).append(this);
-				placeholders.eq(index).html(holder);
-			});
-		}
-
-		// Load the image and execute a callback function.
-		// Returns a jQuery object
-
-		function loadImage(src, callback){
-
-			var img = $('<img>').on('load', function(){
-				callback.call(img);
-			});
-
-			img.attr('src',src);
+			var aaa = $(".tasks").find('.single-task').eq(index).clone();
+			placeholders.eq(index).html(aaa);
 		}
 
 		function showNext(){
@@ -305,5 +261,5 @@
 
 
 	// Initialize the gallery
-	$('.thumbs a').touchTouch();
+	$('.tasks .single-task').tasksSlider();
 })(jQuery);

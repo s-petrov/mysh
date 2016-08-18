@@ -26,4 +26,33 @@ $(function(){
 	    }); 
 	};
 
+	$("#icon-bottom-left").click(function(){
+
+        if ($("#icon-bottom-left").hasClass("moved")){
+            $("#web-contact").animate({
+                left: '-=125px'
+            });
+            $("#info-contact").animate({
+                left: '-=125px',
+                top: '+=125px',
+            });
+            $("#phone-contact").animate({
+                top: '+=125px'
+            });
+		} else {
+	        $("#web-contact").animate({
+	            left: '+=125px'
+	        });
+	        $("#info-contact").animate({
+	            left: '+=125px',
+	            top: '-=125px',
+	        });
+	        $("#phone-contact").animate({
+	            top: '-=125px'
+	        });
+	    }
+
+        $("#icon-bottom-left").toggleClass("moved");
+    });
+
 });	
