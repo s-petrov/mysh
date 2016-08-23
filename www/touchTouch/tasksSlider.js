@@ -88,7 +88,6 @@
 		}).on('touchend',function(){
 
 			if (movevar === false && linkHref !== undefined){
-					console.log("--- CLICK AND LINK");
 					window.open(linkHref, "_system");
 			} 
 
