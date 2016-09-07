@@ -167,8 +167,9 @@ h1 {
   border-radius: 0  0 10px 10px;
 }
 
-.acc-details {
-  color: var(--main-color);
+.acc-item a{
+  text-decoration: none;
+  color: var(--main-color) !important;
   font-size: 1.5em;
 }
 
