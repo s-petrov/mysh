@@ -52,18 +52,13 @@
 		var linkHref = undefined;
 		// Listen for touch events on the body and check if they
 		// originated in #taskSlider img - the images in the slider.
-		$('body').on('touchstart', '#taskSlider .single-task', function(e){
-
+		/*$('body').on('touchstart', '#taskSlider .single-task', function(e){
 			var touch = e.originalEvent,
 				startX = touch.changedTouches[0].pageX;
-
-
 				linkHref = $(this).find('a').first().attr('href');
-
+			console.log(touch);
 			slider.on('touchmove',function(e){
-
 				e.preventDefault();
-
 				movevar = true;
 				touch = e.originalEvent.touches[0] ||
 						e.originalEvent.changedTouches[0];
@@ -86,15 +81,45 @@
 			return false;
 
 		}).on('touchend',function(){
-
 			if (movevar === false && linkHref !== undefined){
-					window.open(linkHref, "_system");
+				window.open(linkHref, "_system");
 			} 
 
 			movevar = false;
 			linkHref = undefined;
 			//return true;
 			slider.off('touchmove');
+		});*/
+		var startX;
+		var linkHref;
+
+		$('#taskSlider > .placeholder').on('touchend', function(e){
+		    if(touchmoved != true){
+		    	if (linkHref !== undefined){
+					window.open(linkHref, "_system");
+					linkHref = undefined;
+					console.log("THE link was set back to undefined")
+				} 
+		    } else {
+				touch = e.originalEvent.touches[0] ||
+						e.originalEvent.changedTouches[0];
+				if(touch.pageX - startX > 10){
+
+					showPrevious();
+				}
+
+				else if (touch.pageX - startX < -10){
+
+					showNext();
+				}
+		    }
+		}).on('touchmove', function(e){
+		    touchmoved = true;
+		}).on('touchstart', function(e){
+			var touch = e.originalEvent;
+			startX = touch.changedTouches[0].pageX;
+		    touchmoved = false;
+		    linkHref = $(this).find('a').first().attr('href');;
 		});
 
 		// Listening for clicks on the thumbnails
