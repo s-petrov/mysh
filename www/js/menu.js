@@ -1,5 +1,13 @@
 $(function(){
 
+	var blio = new Array(
+		"<a href=\"img/pictures/008.jpg\" title=\"\"></a>",
+		"<a href=\"img/pictures/009.jpg\" title=\"\"></a>",
+		"<a href=\"img/pictures/010.jpg\" title=\"\"></a>",
+		"<a href=\"img/pictures/011.jpg\" title=\"\"></a>",
+		"<a href=\"img/pictures/012.jpg\" title=\"\"></a>"
+	);
+
 	$( "#menu-icon" ).click(function() {
   		var x = document.getElementById("myTopnav");
 	    if (x.className === "topnav") {
@@ -54,5 +62,26 @@ $(function(){
 
         $("#icon-bottom-left").toggleClass("moved");
     });
+
+$(".icon-box").click(function(){
+	//addImagesMore();
+});
+
+	function addImagesMore(){
+		var newAdded = false;
+		for (var i = 0; i < 3; i++){
+			if(blio.length > 0){
+				$(".thumbs").append(blio[0]);
+				blio.splice(0, 1);
+				newAdded = true;
+			} else {
+				break;
+			}
+		}
+		if (newAdded){
+			$("#gallerySlider").empty();
+			$('.thumbs a').touchTouch();
+		}
+	};
 
 });	
